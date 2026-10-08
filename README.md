@@ -2,8 +2,6 @@
 
 在 Claude Code 輸入框上方，固定顯示「5 小時」與「每週」兩個用量額度。
 
-Claude Code 內建的用量提示在每週額度快滿時，只會顯示每週那一條，5 小時的用量會被蓋掉。這個 mod 讓兩條永遠同時顯示。
-
 ## 功能
 
 - 5 小時與每週用量並排在一行，5 小時固定在前，額度用滿時也照常顯示
@@ -51,7 +49,7 @@ claude plugin update usage-both@my-mods
 
 ## English
 
-Shows both the 5-hour and weekly Claude usage above the Claude Code prompt, so the 5-hour figure never disappears when the weekly limit is close.
+Shows both the 5-hour and weekly Claude usage above the Claude Code prompt.
 
 - Both windows on one line, 5-hour first, always visible
 - Colored percentage badge and full-width progress bar: green (< 60%), orange (60–79%), red (≥ 80%)
