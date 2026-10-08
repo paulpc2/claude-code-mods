@@ -1,0 +1,17 @@
+{
+  "name": "usage-both",
+  "version": "0.5.0",
+  "description": "Always show both the 5-hour and weekly Claude usage, with colored progress bars, above the prompt",
+  "author": { "name": "paul chen" },
+  "license": "MIT",
+  "types": "./types/index.d.ts",
+  "userConfig": {
+    "language": {
+      "type": "string",
+      "title": "Language",
+      "description": "Display language: zh-TW (繁體中文) or en (English)",
+      "default": "zh-TW",
+      "options": ["zh-TW", "en"]
+    }
+  }
+}

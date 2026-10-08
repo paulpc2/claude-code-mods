@@ -1,0 +1,12 @@
+{
+  "name": "my-mods",
+  "owner": { "name": "paul chen" },
+  "description": "Small Claude Code mods",
+  "plugins": [
+    {
+      "name": "usage-both",
+      "source": "./mods/usage-both",
+      "description": "Always show both the 5-hour and weekly Claude usage, with colored progress bars, above the prompt"
+    }
+  ]
+}
