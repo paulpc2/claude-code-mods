@@ -20,7 +20,7 @@ claude plugin marketplace add paulpc2/claude-code-mods
 ```
 
 ```bash
-claude plugin install usage-both@my-mods
+claude plugin install usage-both@paulpc2-mods
 ```
 
 安裝後在對話中輸入 `/reload-plugins`，或重新開啟 Claude Code。
@@ -32,11 +32,11 @@ claude plugin install usage-both@my-mods
 ## 更新
 
 ```bash
-claude plugin marketplace update my-mods
+claude plugin marketplace update paulpc2-mods
 ```
 
 ```bash
-claude plugin update usage-both@my-mods
+claude plugin update usage-both@paulpc2-mods
 ```
 
 ## 限制
@@ -64,7 +64,7 @@ claude plugin marketplace add paulpc2/claude-code-mods
 ```
 
 ```bash
-claude plugin install usage-both@my-mods
+claude plugin install usage-both@paulpc2-mods
 ```
 
 Then run `/reload-plugins` or restart Claude Code.
