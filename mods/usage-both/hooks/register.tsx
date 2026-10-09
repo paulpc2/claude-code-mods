@@ -33,7 +33,7 @@ const reset = (lang: Lang, iso?: string) => {
 // 綠 < 60%，橘 60–79%，紅 ≥ 80%（用量）；底色不透明度 80%（#CC）
 const tone = (pct: number) => (pct >= 80 ? '#D92D2DCC' : pct >= 60 ? '#E8820CCC' : '#2A9D45CC')
 
-// 進度條底色分三段（0–60、60–80、80–100），段與段之間留一點空隙當刻度（約軌道寬度 0.5%）；底色用 25% 不透明
+// 進度條底色分三段（0–60、60–80、80–100），段與段之間留一點空隙當刻度（約軌道寬度 0.33%）；底色用 25% 不透明
 const ZONES: [number, number, string][] = [
   [0, 60, '#2A9D4540'],
   [60, 80, '#E8820C40'],
@@ -106,10 +106,10 @@ export const register: Register = (on, options) => {
                   const filled = Math.max(0, Math.min(used, b) - a)
                   const empty = b - a - filled
                   return [
-                    // 刻度：1% 寬的格子，左半邊塗上前一段的顏色，只留右半邊（約 0.5%）透明
+                    // 刻度：1% 寬的格子，左邊三分之二塗上前一段的顏色，只留右邊三分之一（約 0.33%）透明
                     z > 0 && (
                       <Box key={`g${z}`} width="1%" height="60%" flexDirection="row">
-                        <Box width="50%" height="100%" backgroundColor={used >= a ? tone(l.percentUsed) : ZONES[z - 1][2]} />
+                        <Box width="67%" height="100%" backgroundColor={used >= a ? tone(l.percentUsed) : ZONES[z - 1][2]} />
                       </Box>
                     ),
                     filled > 0 && <Box key={`f${z}`} flexGrow={filled} height="60%" backgroundColor={tone(l.percentUsed)} />,
