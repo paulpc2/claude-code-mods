@@ -29,7 +29,15 @@ claude plugin install usage-both@paulpc2-mods
 
 ## 切換語言
 
-預設是繁體中文（`zh-TW`）。要改成英文，在 `/config` 裡找到 usage-both 的 Language 選項，改成 `en`。
+預設是繁體中文（`zh-TW`）。要改成英文，在 `~/.claude/settings.json` 的 `env` 加上：
+
+```json
+{
+  "env": { "USAGE_BOTH_LANGUAGE": "en" }
+}
+```
+
+存檔後完全關閉並重新開啟 Claude Code。改回中文就把值改成 `zh-TW` 或刪掉這一行。
 
 ## 更新
 
@@ -57,7 +65,7 @@ Shows both the 5-hour and weekly Claude usage above the Claude Code prompt.
 - Colored percentage badge and full-width progress bar: green (< 60%), orange (60–79%), red (≥ 80%); the track is split into the same three zones with tick gaps at 60% and 80%
 - Reset time as clock time in your local time zone, with the date when it is more than a day away
 - Last known figures are shown right after a reload instead of 0%
-- Traditional Chinese (default) or English: set the plugin's `language` option to `en`
+- Traditional Chinese (default) or English: add `"USAGE_BOTH_LANGUAGE": "en"` under `env` in `~/.claude/settings.json`, then restart Claude Code
 
 Install:
 

@@ -67,8 +67,7 @@ async function refresh($: any) {
 }
 
 export const register: Register = (on, options) => {
-  const lang: Lang = options.language === 'en' ? 'en' : 'zh-TW'
-  const T = TEXT[lang]
+  const optionLang: Lang = options.language === 'en' ? 'en' : 'zh-TW'
 
   on('session.start', async ($, e, next) => {
     await refresh($)
@@ -83,6 +82,14 @@ export const register: Register = (on, options) => {
   on('ui.render', { component: 'AbovePrompt' }, async ($, e, next) => {
     if (e.props.hasSurvey) return next(e)
     const list = await read($, limits)
+
+    // 語言：環境變數 USAGE_BOTH_LANGUAGE 優先（桌面版不一定會把外掛設定傳進來），否則用外掛設定
+    let envLang: string | undefined
+    try {
+      envLang = await $.env.get('USAGE_BOTH_LANGUAGE')
+    } catch {}
+    const lang: Lang = envLang === 'en' || envLang === 'zh-TW' ? envLang : optionLang
+    const T = TEXT[lang]
 
     const { Box, Text } = $.ui.resolve(e)
     // 兩個額度永遠都畫，沒有資料時用空條佔位；5 小時固定在前
