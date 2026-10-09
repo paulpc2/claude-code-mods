@@ -1,6 +1,6 @@
 {
   "name": "usage-both",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "Always show both the 5-hour and weekly Claude usage, with colored progress bars, above the prompt",
   "author": { "name": "paul chen" },
   "license": "MIT",

@@ -30,3 +30,4 @@ test('en: labels switch to English', { options: { language: 'en' } }, async $ =>
     await ui.unmount()
   }
 })
+
