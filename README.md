@@ -61,6 +61,8 @@ claude plugin update usage-both@paulpc2-mods
 
 Shows both the 5-hour and weekly Claude usage above the Claude Code prompt.
 
+![Above the prompt: 5-hour and weekly usage with colored percentage badges, three-zone progress bars and reset times](docs/screenshot-en.png)
+
 - Both windows on one line, 5-hour first, always visible
 - Colored percentage badge and full-width progress bar: green (< 60%), orange (60–79%), red (≥ 80%); the track is split into the same three zones with tick gaps at 60% and 80%
 - Reset time as clock time in your local time zone, with the date when it is more than a day away
