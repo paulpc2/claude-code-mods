@@ -33,7 +33,7 @@ const reset = (lang: Lang, iso?: string) => {
 // 綠 < 60%，橘 60–79%，紅 ≥ 80%（用量）；底色不透明度 80%（#CC）
 const tone = (pct: number) => (pct >= 80 ? '#D92D2DCC' : pct >= 60 ? '#E8820CCC' : '#2A9D45CC')
 
-// 進度條底色分三段（0–60、60–80、80–100），段與段之間留一格空隙當刻度；底色用 25% 不透明
+// 進度條底色分三段（0–60、60–80、80–100），段與段之間留一點空隙當刻度（約軌道寬度 1%）；底色用 25% 不透明
 const ZONES: [number, number, string][] = [
   [0, 60, '#2A9D4540'],
   [60, 80, '#E8820C40'],
@@ -106,7 +106,7 @@ export const register: Register = (on, options) => {
                   const filled = Math.max(0, Math.min(used, b) - a)
                   const empty = b - a - filled
                   return [
-                    z > 0 && <Box key={`g${z}`} width={1} height="60%" />,
+                    z > 0 && <Box key={`g${z}`} width="1%" height="60%" />,
                     filled > 0 && <Box key={`f${z}`} flexGrow={filled} height="60%" backgroundColor={tone(l.percentUsed)} />,
                     empty > 0 && <Box key={`e${z}`} flexGrow={empty} height="60%" backgroundColor={tint} />,
                   ]
