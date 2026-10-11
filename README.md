@@ -7,7 +7,7 @@
 ## 功能
 
 - 5 小時與每週用量並排在一行，5 小時固定在前，額度用滿時也照常顯示
-- 百分比以彩色標籤顯示，進度條撐滿整行寬度
+- 百分比以彩色標籤顯示，進度條撐滿整行寬度，桌面版進度條兩端為圓角
 - 顏色分三階段：綠色（低於 60%）、橘色（60% 到 79%）、紅色（80% 以上）；進度條底色也分成同樣三段，段與段之間留有刻度
 - 重置時間顯示幾點幾分，依你電腦的時區；超過一天會加上日期
 - 剛開啟或重新載入時，先顯示上次的數字，不會閃成 0%
@@ -90,7 +90,7 @@ Shows both the 5-hour and weekly Claude usage above the Claude Code prompt.
 ![Above the prompt: 5-hour and weekly usage with colored percentage badges, three-zone progress bars and reset times](docs/screenshot-en.png)
 
 - Both windows on one line, 5-hour first, always visible
-- Colored percentage badge and full-width progress bar: green (< 60%), orange (60–79%), red (≥ 80%); the track is split into the same three zones with tick gaps at 60% and 80%
+- Colored percentage badge and full-width progress bar (rounded ends in the desktop app): green (< 60%), orange (60–79%), red (≥ 80%); the track is split into the same three zones with tick gaps at 60% and 80%
 - Reset time as clock time in your local time zone, with the date when it is more than a day away
 - Last known figures are shown right after a reload instead of 0%
 - Traditional Chinese (default) or English (see "Language" below)

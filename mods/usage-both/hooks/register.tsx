@@ -40,6 +40,26 @@ const ZONES: [number, number, string][] = [
   [80, 100, '#D92D2D40'],
 ]
 
+// 桌面版用 SVG 畫進度條：寬度用百分比撐滿，兩端用裁切形狀做圓角，刻度用遮罩挖細縫
+const BAR_H = 11
+function barSvg(id: string, used: number, fill: string): string {
+  const rects = ZONES.map(([a, b, tint]) => {
+    const filled = Math.max(0, Math.min(used, b) - a)
+    const empty = b - a - filled
+    return (
+      (filled > 0 ? `<rect x="${a}%" width="${filled}%" height="${BAR_H}" fill="${fill}"/>` : '') +
+      (empty > 0 ? `<rect x="${a + filled}%" width="${empty}%" height="${BAR_H}" fill="${tint}"/>` : '')
+    )
+  }).join('')
+  return (
+    `<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="${BAR_H}">` +
+    `<defs><clipPath id="c${id}"><rect width="100%" height="${BAR_H}" rx="${BAR_H / 2}"/></clipPath>` +
+    `<mask id="m${id}"><rect width="100%" height="${BAR_H}" fill="white"/>` +
+    `<rect x="60%" width="1.5" height="${BAR_H}" fill="black"/><rect x="80%" width="1.5" height="${BAR_H}" fill="black"/></mask></defs>` +
+    `<g clip-path="url(#c${id})" mask="url(#m${id})">${rects}</g></svg>`
+  )
+}
+
 async function refresh($: any) {
   const u = await $.session.usage()
   const fresh: Limit[] = u.rateLimits.map((r: Limit) => ({
@@ -91,7 +111,7 @@ export const register: Register = (on, options) => {
     const lang: Lang = envLang === 'en' || envLang === 'zh-TW' ? envLang : optionLang
     const T = TEXT[lang]
 
-    const { Box, Text } = $.ui.resolve(e)
+    const { Box, Text, Svg } = $.ui.resolve(e) as any
     // 兩個額度永遠都畫，沒有資料時用空條佔位；5 小時固定在前
     const rows = KINDS.map(k => list.find(l => l.kind === k) ?? { kind: k, percentUsed: 0 })
 
@@ -108,6 +128,11 @@ export const register: Register = (on, options) => {
               <Text> </Text>
               <Text bold color="#FFFFFF" backgroundColor={tone(l.percentUsed)}> {l.percentUsed}% </Text>
               <Text>  </Text>
+              {e.surface === 'desktop' ? (
+                <Box flexDirection="row" flexGrow={1} height={1} alignItems="center">
+                  <Svg source={barSvg(l.kind, used, tone(l.percentUsed))} alt={`${l.percentUsed}%`} height={BAR_H} />
+                </Box>
+              ) : (
               <Box flexDirection="row" flexGrow={1} height={1} alignItems="center">
                 {ZONES.flatMap(([a, b, tint], z) => {
                   const filled = Math.max(0, Math.min(used, b) - a)
@@ -124,6 +149,7 @@ export const register: Register = (on, options) => {
                   ]
                 })}
               </Box>
+              )}
               <Box flexShrink={0}>
                 <Text bold>  {reset(lang, l.resetsAt)}</Text>
               </Box>
