@@ -81,6 +81,10 @@ claude plugin update usage-both@paulpc2-mods
 - 只適用於 Claude 訂閱方案；使用 API Key、Bedrock 或 Vertex 時沒有這些額度資料。
 - 依賴 Claude Code 的外掛介面，日後介面變動時可能需要更新。
 
+## 授權
+
+MIT © 2026 paul chen，詳見 [LICENSE](LICENSE)。
+
 ---
 
 ## English
@@ -157,4 +161,4 @@ Then quit and reopen Claude Code.
 
 ## License
 
-MIT
+MIT © 2026 paul chen. See [LICENSE](LICENSE).
